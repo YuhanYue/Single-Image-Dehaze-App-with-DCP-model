@@ -8,21 +8,43 @@ import {
 } from 'react-native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { defineAnimation } from 'react-native-reanimated';
-
 import Profile from '../screen/Profile';
 import SignUp from '../screen/SignUp';
-import { NavigationContainer } from '@react-navigation/native';
 import Login from '../screen/Login';
-import ImageSelect from '../screen/ImageSelect'
 import Monitor from '../screen/Monitor'
+
+import { NavigationContainer } from '@react-navigation/native';
+
 import { createStackNavigator } from '@react-navigation/stack';
 import DehazeResult from '../screen/DehazeResult'
+//import TabNavigator from './tabNavigator'
+import ImageSelect from '../screen/ImageSelect'
+import Navigation from './navigation';
 
-
+const MainStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-const TabNavigator = () =>{
+
+function MainNavigation(){
+    return(
+            <MainStack.Navigator initialRouteName="Tab">
+                <MainStack.Screen name="DehazeResult" component={DehazeResult} options={{headerShown:true}} />
+                <MainStack.Screen name="Tab" component={TabNavigator} options={{headerShown:false}} />
+            </MainStack.Navigator>
+    );
+}
+// const MainNavigation = props => {
+//     return(
+//         <NavigationContainer independent={true}>
+//             <MainStack.Navigator initialRouteName="Tab">
+//                 <MainStack.Screen name="DehazeResult" component={DehazeResult} options={{headerShown:true}} />
+//                 <MainStack.Screen name="Tab" component={TabNavigator} options={{headerShown:false}} />
+//             </MainStack.Navigator>
+//         </NavigationContainer>
+//     );
+// };
+
+function TabNavigator (){
      return(
-        <NavigationContainer independent={true}>
             <Tab.Navigator tabBarOptions={ {
                 showLabel: false,
                 style:{
@@ -90,12 +112,11 @@ const TabNavigator = () =>{
                 }}/> 
                
             </Tab.Navigator>
-        </NavigationContainer>
      );
 };
 
+export default MainNavigation;
 
-export default TabNavigator;
 
 const styles = StyleSheet.create({
     shadow: {

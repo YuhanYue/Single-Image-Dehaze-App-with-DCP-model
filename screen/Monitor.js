@@ -13,8 +13,8 @@ import CameraRoll from "@react-native-community/cameraroll"
 import Toast from 'react-native-root-toast';
 
 class Monitor extends React.Component{
-  takePicture = async () => {
 
+  takePicture = async () => {
       if (this.camera) {
         const options = { quality: 0.5, base64: true};
         const data = await this.camera.takePictureAsync(options);
@@ -23,7 +23,6 @@ class Monitor extends React.Component{
       
       }
     };
-
     render(){
  
       return (

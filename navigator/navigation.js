@@ -8,16 +8,18 @@ import {createStackNavigator} from '@react-navigation/stack'
 import SignUp from '../screen/SignUp'
 import Login from '../screen/Login'
 import TabNavigator from './tabNavigator'
+import DehazeResult from '../screen/DehazeResult'
+import MainNavigation from './MainNavigator'
 
 const Stack = createStackNavigator();
 
 const Navigation = props => {
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteNam="Home">
+            <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home" component={Login} options={{headerShown:false}} />
                 <Stack.Screen name="SignUp" component={SignUp} options={{headerShown:false}} />
-                <Stack.Screen name="Tab" component={TabNavigator} options={{headerShown:false}} />
+                <Stack.Screen name="MainPage" component={MainNavigation} options={{headerShown:false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

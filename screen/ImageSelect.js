@@ -13,48 +13,100 @@ import Inputs from '../components/Inputs'
 import Submit from '../components/Submit'
 import ImagePicker from 'react-native-image-crop-picker';
 
-const ImageSelect = () =>{
-    const [image, setImage] = useState('https://i.ibb.co/Zg4JHkY/Hazy-Image.jpg')
-    const choosePhotoFromLibary = () =>{
+
+export default class ImageSelect extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+          imageURL:'https://i.ibb.co/Zg4JHkY/Hazy-Image.jpg',
+        }
+      }
+    choosePhotoFromLibary = () =>{
         ImagePicker.openPicker({
             width: 300,
             height: 400,
             cropping: true
           }).then(image => {
             console.log(image);
-            setImage(image.sourceURL)
+            this.setState({imageURL: "‘" + image + "’"})//Couldn't find image
           });
     }
 
-    const startDehaze = () =>{
-        console.log('跳转到去雾界面')
+    startDehaze = () =>{
+        this.props.navigation.navigate('DehazeResult')
     };
+
+    render(){
         return(
             <View>
             <Image
                  source={{
-                    uri:image,
+                    uri:this.state.imageURL,
                   }}
                   style={{width: '100%', height: '75%'}}
             />  
             <View style = {{flex: 1, alignItems: 'center', marginTop: 25}}>
                <TouchableOpacity style={[styles.SubmitContainer, {backgroundColor: '#0251ce'}]}
-                onPress = {choosePhotoFromLibary} >
+                onPress = {this.choosePhotoFromLibary} >
                  <Text style = {styles.submitText}>Choose Photo From Library</Text>
                 </TouchableOpacity>
             </View>
             <View style = {{flex: 1, alignItems: 'center', marginTop: 25}}>
                <TouchableOpacity style={[styles.SubmitContainer, {backgroundColor: '#0251ce'}]}
-                onPress = {startDehaze} >
+                onPress = {this.startDehaze} >
                  <Text style = {styles.submitText}>Start Dehaze Process</Text>
                 </TouchableOpacity>
             </View>
             </View>
 
         );
+    }
+        
 };
+// }
+// const ImageSelect = () =>{
+//     const [image, setImage] = useState('https://i.ibb.co/Zg4JHkY/Hazy-Image.jpg')
+//     const choosePhotoFromLibary = () =>{
+//         ImagePicker.openPicker({
+//             width: 300,
+//             height: 400,
+//             cropping: true
+//           }).then(image => {
+//             console.log(image);
+//             setImage(image.sourceURL)
+//           });
+//     }
 
-export default ImageSelect;
+//     const startDehaze = () =>{
+//         this.props.navigation.navigate('SignUp')
+//     };
+
+//         return(
+//             <View>
+//             <Image
+//                  source={{
+//                     uri:image,
+//                   }}
+//                   style={{width: '100%', height: '75%'}}
+//             />  
+//             <View style = {{flex: 1, alignItems: 'center', marginTop: 25}}>
+//                <TouchableOpacity style={[styles.SubmitContainer, {backgroundColor: '#0251ce'}]}
+//                 onPress = {choosePhotoFromLibary} >
+//                  <Text style = {styles.submitText}>Choose Photo From Library</Text>
+//                 </TouchableOpacity>
+//             </View>
+//             <View style = {{flex: 1, alignItems: 'center', marginTop: 25}}>
+//                <TouchableOpacity style={[styles.SubmitContainer, {backgroundColor: '#0251ce'}]}
+//                 onPress = {startDehaze} >
+//                  <Text style = {styles.submitText}>Start Dehaze Process</Text>
+//                 </TouchableOpacity>
+//             </View>
+//             </View>
+
+//         );
+// };
+
+// export default ImageSelect;
 
 
 const styles = StyleSheet.create({
