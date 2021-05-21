@@ -12,6 +12,7 @@ import {Avatar} from 'react-native-paper'
 import Inputs from '../components/Inputs'
 import Submit from '../components/Submit'
 import ImagePicker from 'react-native-image-crop-picker';
+import storage from '@react-native-firebase/storage'
 
 
 export default class ImageSelect extends React.Component {
@@ -32,8 +33,15 @@ export default class ImageSelect extends React.Component {
           });
     }
 
-    startDehaze = () =>{
-        this.props.navigation.navigate('DehazeResult')
+    startDehaze = async() =>{
+        //this.props.navigation.navigate('DehazeResult')
+        const uploadURL = this.state.imageURL;
+        let fileName = uploadURL.substring(uploadURL.lastIndexOf('/' + 1));
+        try{
+            await storage().ref(filename).putFile(uploadURL);
+        }catch(e){
+            console.log(e);
+        }
     };
 
     render(){

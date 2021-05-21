@@ -1141,11 +1141,21 @@
 
 "@react-native-firebase/app@^12.0.0":
   version "12.0.0"
-  resolved "https://registry.nlark.com/@react-native-firebase/app/download/@react-native-firebase/app-12.0.0.tgz"
+  resolved "https://registry.nlark.com/@react-native-firebase/app/download/@react-native-firebase/app-12.0.0.tgz#52b647a8fc65695eeec89f45bcd7538d727d5864"
   integrity sha1-UrZHqPxlaV7uyJ9FvNdTjXJ9WGQ=
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
+
+"@react-native-firebase/firestore@^12.0.0":
+  version "12.0.0"
+  resolved "https://registry.nlark.com/@react-native-firebase/firestore/download/@react-native-firebase/firestore-12.0.0.tgz#bf8794b72c45a8eea09cf27b7499a8d87fb3a815"
+  integrity sha1-v4eUtyxFqO6gnPJ7dJmo2H+zqBU=
+
+"@react-native-firebase/storage@^12.0.0":
+  version "12.0.0"
+  resolved "https://registry.nlark.com/@react-native-firebase/storage/download/@react-native-firebase/storage-12.0.0.tgz#7ab75b86e46e19e265cac0e4cf7c19d6b6a94db2"
+  integrity sha1-erdbhuRuGeJlysDkz3wZ1rapTbI=
 
 "@react-native/assets@1.0.0":
   version "1.0.0"

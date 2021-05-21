@@ -11,50 +11,88 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Share from 'react-native-share';
+import { ScrollView, TouchableOpacity} from 'react-native';
+import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
+import { TouchableOpacityBase } from 'react-native';
 
 
-const Profile= () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.userInfoSection}>
-        <View style={{flexDirection: 'row', marginTop: 15}}>
-          <Avatar.Image 
-            source={require('../assets/avatar.jpg')}
-            size={80}
-          />
-          <View style={{marginLeft: 20}}>
-            <Title style={[styles.title, {
-              marginTop:15,
-              marginBottom: 5,
-            }]}>Full Name</Title>
-            <Caption style={styles.caption}>@username</Caption>
+export default class Profile extends React.Component {
+  render(){
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.userInfoSection}>
+          <View style={{flexDirection: 'row', marginTop: 15}}>
+            <Avatar.Image 
+              source={require('../assets/avatar.jpg')}
+              size={80}
+            />
+            <View style={{marginLeft: 20}}>
+              <Title style={[styles.title, {
+                marginTop:15,
+                marginBottom: 5,
+              }]}>Full Name</Title>
+              <Caption style={styles.caption}>@username</Caption>
+            </View>
           </View>
         </View>
-      </View>
-
-      <View style={styles.userInfoSection}>
-        <View style={styles.row}>
-          <Icon name="phone" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>+91-900000009 phone</Text>
-        </View>
-        <View style={styles.row}>
-          <Icon name="email" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>user@email.com</Text>
-        </View>
-      </View>
-
-      <View style={styles.infoBoxWrapper}>
-          <View style={styles.infoBox}>
-            <Title>112</Title>
-            <Caption>Dehazed Times Count</Caption>
+  
+        <View style={styles.userInfoSection}>
+          <View style={styles.row}>
+            <Icon name="phone" color="#777777" size={20}/>
+            <Text style={{color:"#777777", marginLeft: 20}}>+91-900000009 phone</Text>
           </View>
-      </View>
-    {/* 放去雾历史记录，考虑做时间轴 */}
-    </SafeAreaView>
-  );
+          <View style={styles.row}>
+            <Icon name="email" color="#777777" size={20}/>
+            <Text style={{color:"#777777", marginLeft: 20}}>user@email.com</Text>
+          </View>
+        </View>
+  
+        <View style={styles.infoBoxWrapper}>
+            <View style={styles.infoBox}>
+              <Title>112</Title>
+              <Caption>Dehazed Times Count</Caption>
+            </View>
+        </View>
+        <ScrollView style={{marginBottom:80}}>
+        <View style={styles.infoBoxWrapper}>
+            <TouchableOpacity style={styles.infoBox}
+             onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
+              <Text>Dehaze History 1</Text>
+            </TouchableOpacity>
+         </View>
+         <View style={styles.infoBoxWrapper}>
+            <TouchableOpacity style={styles.infoBox}
+              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
+              <Text >Dehaze History 2</Text>
+            </TouchableOpacity>
+         </View>
+         <View style={styles.infoBoxWrapper}>
+            <TouchableOpacity style={styles.infoBox}
+              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
+              <Text >Dehaze History 2</Text>
+            </TouchableOpacity>
+         </View>
+         <View style={styles.infoBoxWrapper}>
+            <TouchableOpacity style={styles.infoBox}
+              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
+              <Text >Dehaze History 2</Text>
+            </TouchableOpacity>
+         </View>
+         <View style={styles.infoBoxWrapper}>
+            <TouchableOpacity style={styles.infoBox}
+              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
+              <Text >Dehaze History 2</Text>
+            </TouchableOpacity>
+         </View>
+  
+        </ScrollView>
+      {/* 放去雾历史记录，考虑做时间轴 */}
+      </SafeAreaView>
+    );
+  }
+  
 };
 
-export default Profile;
 
 const styles = StyleSheet.create({
   container: {
