@@ -983,7 +983,7 @@
 
 "@react-native-community/cameraroll@^4.0.4":
   version "4.0.4"
-  resolved "https://registry.npm.taobao.org/@react-native-community/cameraroll/download/@react-native-community/cameraroll-4.0.4.tgz#3e2567ce54e3985e8e0a51832dfa0e1c5317f75b"
+  resolved "https://registry.nlark.com/@react-native-community/cameraroll/download/@react-native-community/cameraroll-4.0.4.tgz"
   integrity sha1-PiVnzlTjmF6OClGDLfoOHFMX91s=
 
 "@react-native-community/cli-debugger-ui@^5.0.1-alpha.1":
@@ -1138,6 +1138,14 @@
   version "0.1.10"
   resolved "https://registry.npm.taobao.org/@react-native-community/masked-view/download/@react-native-community/masked-view-0.1.10.tgz"
   integrity sha1-XdpkPhnlh3k7wgNN2b9zmK1D1AE=
+
+"@react-native-firebase/app@^12.0.0":
+  version "12.0.0"
+  resolved "https://registry.nlark.com/@react-native-firebase/app/download/@react-native-firebase/app-12.0.0.tgz"
+  integrity sha1-UrZHqPxlaV7uyJ9FvNdTjXJ9WGQ=
+  dependencies:
+    opencollective-postinstall "^2.0.1"
+    superstruct "^0.6.2"
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -1878,7 +1886,7 @@ balanced-match@^1.0.0:
 
 base-64@0.1.0:
   version "0.1.0"
-  resolved "https://registry.npm.taobao.org/base-64/download/base-64-0.1.0.tgz#780a99c84e7d600260361511c4877613bf24f6bb"
+  resolved "https://registry.nlark.com/base-64/download/base-64-0.1.0.tgz"
   integrity sha1-eAqZyE59YAJgNhURxId2E78k9rs=
 
 base64-js@^1.1.2, base64-js@^1.5.1:
@@ -2142,6 +2150,16 @@ cliui@^7.0.2:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     wrap-ansi "^7.0.0"
+
+clone-deep@^2.0.1:
+  version "2.0.2"
+  resolved "https://registry.npm.taobao.org/clone-deep/download/clone-deep-2.0.2.tgz"
+  integrity sha1-ANs6Hhc2VnMNEYjD1qztbX6pdxM=
+  dependencies:
+    for-own "^1.0.0"
+    is-plain-object "^2.0.4"
+    kind-of "^6.0.0"
+    shallow-clone "^1.0.0"
 
 clone@^1.0.2:
   version "1.0.4"
@@ -3093,10 +3111,22 @@ flow-parser@^0.121.0:
   resolved "https://registry.npm.taobao.org/flow-parser/download/flow-parser-0.121.0.tgz"
   integrity sha1-n5iY6uyRqffDI+npktgatcWOYY8=
 
-for-in@^1.0.2:
+for-in@^0.1.3:
+  version "0.1.8"
+  resolved "https://registry.npm.taobao.org/for-in/download/for-in-0.1.8.tgz"
+  integrity sha1-2Hc5COMSVhCZUrH9ubP6hn0ndeE=
+
+for-in@^1.0.1, for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/for-in/download/for-in-1.0.2.tgz"
   integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
+
+for-own@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/for-own/download/for-own-1.0.0.tgz"
+  integrity sha1-xjMy9BXO3EsE2/5wz4NklMU8tEs=
+  dependencies:
+    for-in "^1.0.1"
 
 forever-agent@~0.6.1:
   version "0.6.1"
@@ -3226,7 +3256,7 @@ glob-parent@^5.0.0:
 
 glob@7.0.6:
   version "7.0.6"
-  resolved "https://registry.npm.taobao.org/glob/download/glob-7.0.6.tgz?cache=0&sync_timestamp=1608222050029&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fglob%2Fdownload%2Fglob-7.0.6.tgz#211bafaf49e525b8cd93260d14ab136152b3f57a"
+  resolved "https://registry.nlark.com/glob/download/glob-7.0.6.tgz?cache=0&sync_timestamp=1620337382269&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fglob%2Fdownload%2Fglob-7.0.6.tgz"
   integrity sha1-IRuvr0nlJbjNkyYNFKsTYVKz9Xo=
   dependencies:
     fs.realpath "^1.0.0"
@@ -4391,7 +4421,7 @@ kind-of@^5.0.0:
   resolved "https://registry.npm.taobao.org/kind-of/download/kind-of-5.1.0.tgz"
   integrity sha1-cpyR4thXt6QZofmqZWhcTDP1hF0=
 
-kind-of@^6.0.0, kind-of@^6.0.2:
+kind-of@^6.0.0, kind-of@^6.0.1, kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.npm.taobao.org/kind-of/download/kind-of-6.0.3.tgz"
   integrity sha1-B8BQNKbDSfoG4k+jWqdttFgM5N0=
@@ -4980,6 +5010,14 @@ mixin-deep@^1.2.0:
     for-in "^1.0.2"
     is-extendable "^1.0.1"
 
+mixin-object@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npm.taobao.org/mixin-object/download/mixin-object-2.0.1.tgz"
+  integrity sha1-T7lJRB2rGCVA8f4DW6YOGUel5X4=
+  dependencies:
+    for-in "^0.1.3"
+    is-extendable "^0.1.1"
+
 mkdirp@^0.5.1:
   version "0.5.5"
   resolved "https://registry.npm.taobao.org/mkdirp/download/mkdirp-0.5.5.tgz?cache=0&sync_timestamp=1599533186253&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmkdirp%2Fdownload%2Fmkdirp-0.5.5.tgz"
@@ -5272,7 +5310,7 @@ open@^6.2.0:
   dependencies:
     is-wsl "^1.1.0"
 
-opencollective-postinstall@^2.0.3:
+opencollective-postinstall@^2.0.1, opencollective-postinstall@^2.0.3:
   version "2.0.3"
   resolved "https://registry.npm.taobao.org/opencollective-postinstall/download/opencollective-postinstall-2.0.3.tgz"
   integrity sha1-eg//l49tv6TQBiOPusmO1BmMMlk=
@@ -5704,13 +5742,13 @@ react-native-reanimated@^2.1.0:
     string-hash-64 "^1.0.3"
 
 react-native-root-siblings@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.npm.taobao.org/react-native-root-siblings/download/react-native-root-siblings-4.1.0.tgz#23305a0f96ebd27cff3667d1cb980684da35e5d1"
-  integrity sha1-IzBaD5br0nz/NmfRy5gGhNo15dE=
+  version "4.1.1"
+  resolved "https://registry.nlark.com/react-native-root-siblings/download/react-native-root-siblings-4.1.1.tgz"
+  integrity sha1-t3Qtt2NKh/UH65ml/WmcTxDEarA=
 
 react-native-root-toast@^3.2.1:
   version "3.2.1"
-  resolved "https://registry.npm.taobao.org/react-native-root-toast/download/react-native-root-toast-3.2.1.tgz#f456d029f5c5b76e4b686334f25371465478a3be"
+  resolved "https://registry.nlark.com/react-native-root-toast/download/react-native-root-toast-3.2.1.tgz"
   integrity sha1-9FbQKfXFt25LaGM08lNxRlR4o74=
   dependencies:
     prop-types "^15.5.10"
@@ -5759,7 +5797,7 @@ react-native-vector-icons@^8.1.0:
 
 react-native@^0.64.0:
   version "0.64.0"
-  resolved "https://registry.npm.taobao.org/react-native/download/react-native-0.64.0.tgz#c3bde5b638bf8bcf12bae6e094930d39cb942ab7"
+  resolved "https://registry.npm.taobao.org/react-native/download/react-native-0.64.0.tgz"
   integrity sha1-w73ltji/i88SuubglJMNOcuUKrc=
   dependencies:
     "@jest/create-cache-key-function" "^26.5.0"
@@ -6108,7 +6146,7 @@ rimraf@~2.6.2:
 
 rn-fetch-blob@^0.12.0:
   version "0.12.0"
-  resolved "https://registry.npm.taobao.org/rn-fetch-blob/download/rn-fetch-blob-0.12.0.tgz#ec610d2f9b3f1065556b58ab9c106eeb256f3cba"
+  resolved "https://registry.nlark.com/rn-fetch-blob/download/rn-fetch-blob-0.12.0.tgz"
   integrity sha1-7GENL5s/EGVVa1irnBBu6yVvPLo=
   dependencies:
     base-64 "0.1.0"
@@ -6256,6 +6294,15 @@ setprototypeof@1.1.1:
   version "1.1.1"
   resolved "https://registry.npm.taobao.org/setprototypeof/download/setprototypeof-1.1.1.tgz"
   integrity sha1-fpWsskqpL1iF4KvvW6ExMw1K5oM=
+
+shallow-clone@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.nlark.com/shallow-clone/download/shallow-clone-1.0.0.tgz"
+  integrity sha1-RIDNBuiC72iyrYij6lSDLixItXE=
+  dependencies:
+    is-extendable "^0.1.1"
+    kind-of "^5.0.0"
+    mixin-object "^2.0.1"
 
 shebang-command@^1.2.0:
   version "1.2.0"
@@ -6638,6 +6685,14 @@ sudo-prompt@^9.0.0:
   version "9.2.1"
   resolved "https://registry.npm.taobao.org/sudo-prompt/download/sudo-prompt-9.2.1.tgz"
   integrity sha1-d++4QwnJykiVJ6TnSfKH5r3VKv0=
+
+superstruct@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.nlark.com/superstruct/download/superstruct-0.6.2.tgz"
+  integrity sha1-xesDSAahf/mNA2Z0Fp74Xkx/ahw=
+  dependencies:
+    clone-deep "^2.0.1"
+    kind-of "^6.0.1"
 
 supports-color@^5.3.0:
   version "5.5.0"

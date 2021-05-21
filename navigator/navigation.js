@@ -10,6 +10,7 @@ import Login from '../screen/Login'
 import TabNavigator from './tabNavigator'
 import DehazeResult from '../screen/DehazeResult'
 import MainNavigation from './MainNavigator'
+import test from '../screen/test'
 
 const Stack = createStackNavigator();
 

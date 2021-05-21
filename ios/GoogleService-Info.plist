@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>758397293330-i1pvbmhp5baq1d20unb9m2j5tn1gna9k.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.758397293330-i1pvbmhp5baq1d20unb9m2j5tn1gna9k</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAbmyukHH1WaUlXteVOUfGVjYYJt0VGDX8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>758397293330</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.DehazeApp</string>
+	<key>PROJECT_ID</key>
+	<string>dehaze-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dehaze-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:758397293330:ios:8142add4ac4a22b154d9cb</string>
+</dict>
+</plist>

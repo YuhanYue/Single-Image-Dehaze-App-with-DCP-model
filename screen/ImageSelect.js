@@ -28,7 +28,7 @@ export default class ImageSelect extends React.Component {
             cropping: true
           }).then(image => {
             console.log(image);
-            this.setState({imageURL: "‘" + image + "’"})//Couldn't find image
+            this.setState({imageURL: image['path']})//Couldn't find image
           });
     }
 
