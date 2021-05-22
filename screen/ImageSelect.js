@@ -38,7 +38,8 @@ export default class ImageSelect extends React.Component {
         const uploadURL = this.state.imageURL;
         let fileName = uploadURL.substring(uploadURL.lastIndexOf('/' + 1));
         try{
-            await storage().ref(filename).putFile(uploadURL);
+            await storage().ref(fileName).putFile(uploadURL);
+            console.log(uploadURL)
         }catch(e){
             console.log(e);
         }
