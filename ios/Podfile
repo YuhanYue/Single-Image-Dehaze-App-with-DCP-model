@@ -26,6 +26,8 @@ target 'DehazeApp' do
   # use_flipper!()
 
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Analytics'
   # post_install do |installer|
   #   react_native_post_install(installer)
   # end

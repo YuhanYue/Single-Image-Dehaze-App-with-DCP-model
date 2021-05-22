@@ -13,8 +13,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		50BC16172B6320331A470E00 /* libPods-DehazeApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 527D20CA8AF672B6720983C6 /* libPods-DehazeApp.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A71436792657D73800598CC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A71436782657D73800598CC5 /* GoogleService-Info.plist */; };
 		A781FA5926203DDB009FBE25 /* QBImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A781FA5826203DDB009FBE25 /* QBImagePicker.storyboard */; };
+		A7F26EA72658FD9000DA0871 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7F26EA62658FD9000DA0871 /* GoogleService-Info.plist */; };
 		C9432B619A51B7E273DC08C9 /* libPods-DehazeApp-DehazeAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD0185010CAB638CD35B6B5 /* libPods-DehazeApp-DehazeAppTests.a */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +43,8 @@
 		527D20CA8AF672B6720983C6 /* libPods-DehazeApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DehazeApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DehazeApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DD0185010CAB638CD35B6B5 /* libPods-DehazeApp-DehazeAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DehazeApp-DehazeAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A71436782657D73800598CC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A781FA5826203DDB009FBE25 /* QBImagePicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = QBImagePicker.storyboard; path = "../node_modules/react-native-image-crop-picker/ios/QBImagePicker/QBImagePicker/QBImagePicker.storyboard"; sourceTree = "<group>"; };
+		A7F26EA62658FD9000DA0871 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D425D2FEDFA6169A68B5829F /* Pods-DehazeApp-DehazeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DehazeApp-DehazeAppTests.release.xcconfig"; path = "Target Support Files/Pods-DehazeApp-DehazeAppTests/Pods-DehazeApp-DehazeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F2EDE2BF863C601AF9F2B8B5 /* Pods-DehazeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DehazeApp.debug.xcconfig"; path = "Target Support Files/Pods-DehazeApp/Pods-DehazeApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		13B07FAE1A68108700A75B9A /* DehazeApp */ = {
 			isa = PBXGroup;
 			children = (
-				A71436782657D73800598CC5 /* GoogleService-Info.plist */,
+				A7F26EA62658FD9000DA0871 /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -248,7 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A781FA5926203DDB009FBE25 /* QBImagePicker.storyboard in Resources */,
-				A71436792657D73800598CC5 /* GoogleService-Info.plist in Resources */,
+				A7F26EA72658FD9000DA0871 /* GoogleService-Info.plist in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
