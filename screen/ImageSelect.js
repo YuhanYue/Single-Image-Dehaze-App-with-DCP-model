@@ -29,17 +29,18 @@ export default class ImageSelect extends React.Component {
             cropping: true
           }).then(image => {
             console.log(image);
-            this.setState({imageURL: image['path']})//Couldn't find image
+            this.setState({imageURL: image['sourceURL']})//Couldn't find image
           });
     }
 
     startDehaze = async() =>{
         //this.props.navigation.navigate('DehazeResult')
         const uploadURL = this.state.imageURL;
-        let fileName = uploadURL.substring(uploadURL.lastIndexOf('/' + 1));
+        let fileName = uploadURL.substring(uploadURL.lastIndexOf('/') + 1);
+        fileName = fileName.substring(0, fileName.lastIndexOf('.'))+"_hazy.jpg";
+        console.log(fileName)
         try{
             await storage().ref(fileName).putFile(uploadURL);
-            console.log(uploadURL)
         }catch(e){
             console.log(e);
         }

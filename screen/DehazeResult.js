@@ -25,14 +25,14 @@ export default class DehazeResult extends React.Component {
             <ScrollView>
             <Text style={styles.DehazeText}>Before Dehaze</Text>
              <Image 
-             source={require('../assets/avatar.jpg')}
+             source={require('../assets/hazy(1).jpg')}
             //  source={this.state.hazyImage}
              style={styles.image}
             />  
 
             <Text style={styles.DehazeText}>After Dehaze</Text>
              <Image 
-             source={require('../assets/avatar.jpg')}
+             source={require('../assets/DCPdehaze(1).jpg')}
             //  source={this.state.hazyImage}
             style={styles.image}
             />  
