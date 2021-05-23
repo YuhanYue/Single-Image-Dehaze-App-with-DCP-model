@@ -1,32 +1,56 @@
+var express = require("express");
+var app = express();
 
-var express = require('express');   //引入express模块
-var mysql = require('mysql');     //引入mysql模块
-var app = express();        //创建express的实例
-var bodyParser = require('body-parser');
- 
-app.use(bodyParser.json({tyle:'application/json'}))
-app.use(bodyParser.urlencoded({extended:true}))
+var mysql = require("mysql");
+var bodyParser = require("body-parser");
 
-var connection = mysql.createConnection({
-  host:'localhost',
-  port:'3306',
-  user:'root',
-  password:'123456',
-  database:'Dehaze'
+app.use(bodyParser.json({ type: "application/json" }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+var con = mysql.createConnection({
+  host: "localhost",
+  port: "3306",
+  user: "root",
+  password: "123456", // empty for Windows
+  database: "Dehaze",
 });
 
-var server = app.listen(3000, function(){
+//create listen
+
+var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
 });
 
-connection.connect(function(error){
-  if(error) console.log(error);
-  else console.log('connected to Database');
-})
 
-app.get('/user',function (req,res) {
-  connection.query('select * from User', function(error, rows){
+
+con.connect(function (error) {
+  if (error) console.log(error);
+  else console.log("connected");
+});
+
+//login
+app.get("/login", (req, res) => {
+  con.query(
+    "SELECT * FROM User",
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+      if (result.length > 0) {
+        res.send(result);
+        console.log(result)
+        //console.log(username)
+      } else {
+        res.send({ message: "Wrong username/password conbination!" });
+      }
+      console.log(result)
+    }
+  );
+});
+
+app.post('/signUp',function (req,res) {
+  connection.query('select * from Administrator', function(error, rows){
     if(error) console.log(error)
     
     else {
@@ -37,6 +61,9 @@ app.get('/user',function (req,res) {
   });
   
 });
+
+
+// /Users/overainy/Desktop/ImageData
 
 // var connection = mysql.createConnection({      //创建mysql实例
 //   host:'localhost',

@@ -6,6 +6,7 @@ import {View,
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Input} from 'react-native-elements'
 
+
 class Inputs extends Component{
     state = {isFocused: false}
 
@@ -13,7 +14,9 @@ class Inputs extends Component{
         this.setState({isFocused: true})
     }
 
-    onclick
+    // passTextToFather= (newText) => {
+    //     text = newText;
+    // }
 
     render(){
         return(
@@ -32,6 +35,7 @@ class Inputs extends Component{
                             color={this.state.isFocused ? '#0779e4':'grey'}
                             />
                     }
+                    // onChangeText = {this.passTextToFather}
                     />
             </View>
         );
@@ -57,3 +61,4 @@ const styles = StyleSheet.create({
 });
 
 export default Inputs;
+// export {text};

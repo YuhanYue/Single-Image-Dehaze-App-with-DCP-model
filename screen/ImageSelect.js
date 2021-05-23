@@ -13,6 +13,15 @@ import Inputs from '../components/Inputs'
 import Submit from '../components/Submit'
 import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage'
+import Axios from "axios";
+import { response } from 'express';
+
+
+
+
+const common_url = 'http://192.168.1.110:3000/';  //服务器地址
+
+ 
 
 
 export default class ImageSelect extends React.Component {
@@ -20,8 +29,10 @@ export default class ImageSelect extends React.Component {
         super(props);
         this.state = {
           imageURL:'https://i.ibb.co/Zg4JHkY/Hazy-Image.jpg',
+          imageInfo:'',
         }
       }
+
     choosePhotoFromLibary = () =>{
         ImagePicker.openPicker({
             width: 300,
@@ -29,8 +40,37 @@ export default class ImageSelect extends React.Component {
             cropping: true
           }).then(image => {
             console.log(image);
-            this.setState({imageURL: image['sourceURL']})//Couldn't find image
+            this.setState({imageURL: image['sourceURL']});
+            this.setState({imageInfo: image})
           });
+          //存图片到数据库
+    }
+
+    
+    uploadImage(url, params){
+        return new Promise(function (resolve, reject) {
+            let formData = new FormData();
+            for (var key in params){
+                formData.append(key, params[key]);
+            }
+            let file = {uri: params.path, type: 'application/octet-stream', name: 'image.jpg'};
+            formData.append("file", file);
+            fetch(common_url + url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'multipart/form-data;charset=utf-8',
+                },
+                body: formData,
+            }).then((response) => response.json())
+                .then((responseData)=> {
+                    console.log('uploadImage', responseData);
+                    resolve(responseData);
+                })
+                .catch((err)=> {
+                    console.log('err', err);
+                    reject(err);
+                });
+        });
     }
 
     startDehaze = async() =>{
@@ -39,12 +79,60 @@ export default class ImageSelect extends React.Component {
         let fileName = uploadURL.substring(uploadURL.lastIndexOf('/') + 1);
         fileName = fileName.substring(0, fileName.lastIndexOf('.'))+"_hazy.jpg";
         console.log(fileName)
-        try{
-            await storage().ref(fileName).putFile(uploadURL);
-        }catch(e){
-            console.log(e);
+        console.log(this.state.imageInfo)
+        let params = {
+            userId:'1',   //用户id
+            path:uploadURL    //本地文件地址
         }
+        this.uploadImage('upload', params )
+            .then( res=>{
+                //请求成功
+                if(res.header.statusCode === 'success'){
+                    //这里设定服务器返回的header中statusCode为success时数据返回成功
+                    upLoadImgUrl = res.body.imgurl;  //服务器返回的地址
+                }else{
+                     //服务器返回异常，设定服务器返回的异常信息保存在 header.msgArray[0].desc
+                    console.log(res.header.msgArray[0].desc);
+                }
+            }).catch( err => { 
+                console.log('uploadImage', err.message);
+                 //请求失败
+            })
+    
+    //     var url = "http://192.168.1.110:3000/upload"
+    //     Axios.post(url ,{
+    //         imageURL :this.state.imageURL,
+    // }).then((response)=>{
+    //     let params = {
+    //     userId:'1',   //用户id
+    //     path: imageURL //手机图片地址
+    // }
+    // try{
+    //     uploadImage('/Users/overainy/Desktop/ImageData/', params )
+    //     .then( res=>{
+    //     //请求成功
+    //     if(res.header.statusCode === 'success'){
+    //         //这里设定服务器返回的header中statusCode为success时数据返回成功
+    //         upLoadImgUrl = res.body.imgurl;  //服务器返回的地址
+    //     }else{
+    //         //服务器返回异常，设定服务器返回的异常信息保存在 header.msgArray[0].desc
+    //         console.log(res.header.msgArray[0].desc);
+    //     }
+    // }).catch( err => { 
+    //     console.log('uploadImage', err.message);
+    //     //请求失败
+    // })
+    //         // await storage().ref(fileName).putFile(uploadURL);
+    //     }catch(e){
+    //         console.log(e);
+    //     }
+
+    // });
+        
+        //存去雾后图片到数据库
     };
+
+    
 
     render(){
         return(

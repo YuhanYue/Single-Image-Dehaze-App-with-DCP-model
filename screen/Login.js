@@ -10,8 +10,62 @@ import {
 
 import Inputs from '../components/Inputs'
 import Submit from '../components/Submit'
-
+import Axios from "axios";
 export default class Login extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            username:' ',
+            password:' ',
+        }
+    }
+    
+
+    componentDidMount() {
+        this.retrieveUsername();
+    }
+
+    
+    onUsernameChanged = (newUsername) => {
+        this.username = newUsername;
+        //update state usernmae
+    };
+    
+    onPasswordChanged = (newPassword) => {
+        this.password = newPassword;
+    };
+    
+    retrieveUsername = async () => {
+        try{
+          const username = await AsyncStorage.getItem("username")
+          if(username !== null){
+            console.log(username);
+            this.props.updateUsername(username);
+          }
+        }catch(error){}
+        
+      }
+      
+    login = () => {
+        this.props.navigation.replace('MainPage')
+        // var url = 'http://192.168.1.100:3000/login';
+        // Axios.post(url ,{
+        //   username: this.username, 
+        //   passwd: this.password,
+        // }).then((response) => {
+        //   if(response.data.message){
+        //     ToastAndroid.show('wrong username/password combination!',ToastAndroid.SHORT);
+        //   } else{
+        //     this.storeUsername(this.username)
+        //     //console.log(this.username)
+        //     this.props.navigation.replace("MainPage");
+        //     this.retrieveUsername();
+        //   }
+        //   //console.log(response);
+        // });
+    }
+    
     render(){
         return(
             <ScrollView style = {{backgroundColor:'whilte'}}>
@@ -27,7 +81,7 @@ export default class Login extends React.Component{
                          <Text style={[styles.textBody], {alignSelf: 'flex-end'}}>Forgot Password?</Text>
                      </View>
                      <TouchableOpacity style={[styles.submitContainer, {backgroundColor: '#0251ce'}]}
-                        onPress = {() => this.props.navigation.navigate('MainPage')}>
+                        onPress = {this.login}>
                          <Text style = {styles.submitText}>LOG IN</Text>
                      </TouchableOpacity>
                      <View style={{flexDirection: 'row', marginVertical: 5}}>
@@ -38,7 +92,7 @@ export default class Login extends React.Component{
                      
                 </View>
              </ScrollView>
-         )
+         );
     }
 }
 
