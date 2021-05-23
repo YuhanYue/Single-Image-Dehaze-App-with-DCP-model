@@ -26,11 +26,16 @@ connection.connect(function(error){
 })
 
 app.get('/user',function (req,res) {
-  connection.query('select * from user', function(error, rows, feilds){
+  connection.query('select * from User', function(error, rows){
     if(error) console.log(error)
-    else console.log(rows)
+    
+    else {
+      
+      console.log(rows)
+      res.send(rows);  //服务器响应请求
+    }
   });
-  res.send(rows);  //服务器响应请求
+  
 });
 
 // var connection = mysql.createConnection({      //创建mysql实例
