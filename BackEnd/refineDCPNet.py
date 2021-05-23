@@ -64,10 +64,10 @@ def deHaze(m, r=81, eps=0.001, w=0.95, maxV1=0.80, bGamma=False):
     return Y
 
 if __name__ == '__main__':#1-8 jpg  9-10 png
-    if not sys.argv[0]:
-        return
-    m = dehaze(cv2.imread(sys.argv[1]) / 255.0) * 255;
-    cv2.imwrite("/Users/overainy/Desktop/ImageData");
+    
+    m = deHaze(cv2.imread(sys.argv[1]) / 255.0) * 255
+    destname = sys.argv[1].split('/')[-1].split('.')[0]
+    cv2.imwrite(sys.argv[2] + destname + '_dehaze.jpg', m)
     
     # for i in range(1, 10):
     #     print(i)

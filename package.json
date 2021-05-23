@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "ios-deploy": "^1.11.4",
+    "jsexecpy": "^1.1.0",
     "multer": "^1.4.2",
     "multipart": "^0.1.5",
     "multiparty": "^4.2.2",

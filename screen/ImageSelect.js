@@ -15,12 +15,13 @@ import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage'
 import Axios from "axios";
 import { response } from 'express';
+import {CameraRoll} from '@react-native-community/cameraroll'
 
 
 
 
 const common_url = 'http://192.168.1.110:3000/';  //服务器地址
-
+token = '';   //用户登陆后返回的token
  
 
 
@@ -48,6 +49,7 @@ export default class ImageSelect extends React.Component {
 
     
     uploadImage(url, params){
+        var dehazedImageName = ' ';
         return new Promise(function (resolve, reject) {
             let formData = new FormData();
             for (var key in params){
@@ -63,7 +65,14 @@ export default class ImageSelect extends React.Component {
                 body: formData,
             }).then((response) => response.json())
                 .then((responseData)=> {
-                    console.log('uploadImage', responseData);
+                    dehazedImageName = responseData['filename']
+                    console.log('uploadImage111:', dehazedImageName);
+                    let path = dehazedImageName;
+                    CameraRoll.saveToCameraRoll(path).then(result => {
+                        alert('保存成功！地址如下：\n' + result);
+                    }).catch(error => {
+                        alert('保存失败！\n' + error);
+                    })
                     resolve(responseData);
                 })
                 .catch((err)=> {
@@ -75,6 +84,7 @@ export default class ImageSelect extends React.Component {
 
     startDehaze = async() =>{
         //this.props.navigation.navigate('DehazeResult')
+       
         const uploadURL = this.state.imageURL;
         let fileName = uploadURL.substring(uploadURL.lastIndexOf('/') + 1);
         fileName = fileName.substring(0, fileName.lastIndexOf('.'))+"_hazy.jpg";
@@ -87,13 +97,14 @@ export default class ImageSelect extends React.Component {
         this.uploadImage('upload', params )
             .then( res=>{
                 //请求成功
-                if(res.header.statusCode === 'success'){
-                    //这里设定服务器返回的header中statusCode为success时数据返回成功
-                    upLoadImgUrl = res.body.imgurl;  //服务器返回的地址
-                }else{
-                     //服务器返回异常，设定服务器返回的异常信息保存在 header.msgArray[0].desc
-                    console.log(res.header.msgArray[0].desc);
-                }
+                // if(res.status === 'success'){
+                //     //这里设定服务器返回的header中statusCode为success时数据返回成功
+                //     upLoadImgUrl = res.body.imgurl;  //服务器返回的地址
+                // }else{
+                //      //服务器返回异常，设定服务器返回的异常信息保存在 header.msgArray[0].desc
+                //     console.log('error!!!');
+                // }
+
             }).catch( err => { 
                 console.log('uploadImage', err.message);
                  //请求失败
