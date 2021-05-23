@@ -14,6 +14,7 @@
 		50BC16172B6320331A470E00 /* libPods-DehazeApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 527D20CA8AF672B6720983C6 /* libPods-DehazeApp.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A781FA5926203DDB009FBE25 /* QBImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A781FA5826203DDB009FBE25 /* QBImagePicker.storyboard */; };
+		A7B0F8A6265AC7850023C679 /* libRNCCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B0F8A2265AC72A0023C679 /* libRNCCameraRoll.a */; };
 		A7F26EA72658FD9000DA0871 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7F26EA62658FD9000DA0871 /* GoogleService-Info.plist */; };
 		C9432B619A51B7E273DC08C9 /* libPods-DehazeApp-DehazeAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD0185010CAB638CD35B6B5 /* libPods-DehazeApp-DehazeAppTests.a */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = DehazeApp;
+		};
+		A7B0F8A1265AC72A0023C679 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A7B0F89D265AC7290023C679 /* RNCCameraRoll.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
+			remoteInfo = RNCCameraRoll;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -44,6 +52,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DehazeApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9DD0185010CAB638CD35B6B5 /* libPods-DehazeApp-DehazeAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DehazeApp-DehazeAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A781FA5826203DDB009FBE25 /* QBImagePicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = QBImagePicker.storyboard; path = "../node_modules/react-native-image-crop-picker/ios/QBImagePicker/QBImagePicker/QBImagePicker.storyboard"; sourceTree = "<group>"; };
+		A7B0F89D265AC7290023C679 /* RNCCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNCCameraRoll.xcodeproj; path = "../node_modules/@react-native-community/cameraroll/ios/RNCCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		A7F26EA62658FD9000DA0871 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D425D2FEDFA6169A68B5829F /* Pods-DehazeApp-DehazeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DehazeApp-DehazeAppTests.release.xcconfig"; path = "Target Support Files/Pods-DehazeApp-DehazeAppTests/Pods-DehazeApp-DehazeAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -63,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7B0F8A6265AC7850023C679 /* libRNCCameraRoll.a in Frameworks */,
 				50BC16172B6320331A470E00 /* libPods-DehazeApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +124,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A7B0F89D265AC7290023C679 /* RNCCameraRoll.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -139,6 +150,14 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* DehazeApp.app */,
 				00E356EE1AD99517003FC87E /* DehazeAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7B0F89E265AC7290023C679 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7B0F8A2265AC72A0023C679 /* libRNCCameraRoll.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,6 +246,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A7B0F89E265AC7290023C679 /* Products */;
+					ProjectRef = A7B0F89D265AC7290023C679 /* RNCCameraRoll.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* DehazeApp */,
@@ -234,6 +259,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A7B0F8A2265AC72A0023C679 /* libRNCCameraRoll.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNCCameraRoll.a;
+			remoteRef = A7B0F8A1265AC72A0023C679 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {

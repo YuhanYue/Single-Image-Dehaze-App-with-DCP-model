@@ -96,14 +96,18 @@ app.post('/upload',(req, res) =>{
       });
       let cmd = 'zsh ~/Desktop/520yyh.sh'
       let cmd2 = "conda run -n py39t python ./refineDCPNet.py " + destPath + " " + "/Users/overainy/Desktop/ImageData/dehazedImage/";
-      dehazedImage = 'file:///Users/overainy/Desktop/ImageData/dehazedImage/'+fileName + '_dehaze.jpg'
+      //destPath是hazyimage的路径，后面是要保存的路径
+      dehazedName = fileName.substring(0, fileName.lastIndexOf('.'))+"_dehaze.jpg";
+      dehazedImage = 'file:///Users/overainy/Desktop/ImageData/dehazedImage/'+ dehazedName
       fs.writeFile("/Users/overainy/Desktop/520yyh.sh", cmd2, error => {console.log(error);});
       exec(cmd, function(error, stdout, stderr) {
         if(error) console.log(error)
-        else console.log('success')
+        else {
+          console.log('success')
+          return res.status(200).json({filename: dehazedImage});
+        }
       });
 
-      return res.status(200).json({filename: dehazedImage});
       
 
       

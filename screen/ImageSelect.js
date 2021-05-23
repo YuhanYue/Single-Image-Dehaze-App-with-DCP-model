@@ -15,7 +15,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import storage from '@react-native-firebase/storage'
 import Axios from "axios";
 import { response } from 'express';
-import {CameraRoll} from '@react-native-community/cameraroll'
+import CameraRoll from "@react-native-community/cameraroll";
 
 
 
@@ -66,13 +66,15 @@ export default class ImageSelect extends React.Component {
             }).then((response) => response.json())
                 .then((responseData)=> {
                     dehazedImageName = responseData['filename']
-                    console.log('uploadImage111:', dehazedImageName);
                     let path = dehazedImageName;
-                    CameraRoll.saveToCameraRoll(path).then(result => {
+                    console.log('保存图片路径为',path)
+                    CameraRoll.save(path,'photo').then(result => {
                         alert('保存成功！地址如下：\n' + result);
                     }).catch(error => {
                         alert('保存失败！\n' + error);
                     })
+
+                    
                     resolve(responseData);
                 })
                 .catch((err)=> {
