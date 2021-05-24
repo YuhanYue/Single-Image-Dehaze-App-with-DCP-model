@@ -146,5 +146,31 @@ app.post('/upload',(req, res) =>{
     );
   });
 
+  
+
+  app.post("/getDehazed", function(req, res){
+    const fileAddress = req.body.fileAddress;
+
+  //   function saveImg(){
+  //     const base64 = canvas.toDataURL().replace(/^data:image\/\w+;base64,/, ""); //必须去掉前缀
+  //     const buffer = new Buffer(base64, 'base64');
+  //     fs.writeFile('保存路径', buffer, function (err) {
+  //         if(err) throw err;
+  //         console.log('保存成功');
+  //     });
+  // }
+
+   fs.readFile(fileAddress,'binary',function(err,data){
+    if(err){
+        console.log(err)
+    }else{
+        const buffer = new Buffer(data, 'binary');
+        img.src = 'data: image/'+ getImageType(fileName) +';base64,' + buffer.toString('base64');
+        console.log(img.src)
+        res.send(img.src)
+    }
+});
+  });
+
 
 

@@ -16,7 +16,9 @@ import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/
 import { TouchableOpacityBase } from 'react-native';
 import { Component } from 'react';
 import Card from '../components/Card'
-//flatlist存图片
+import RNFetchBlob from 'react-native-fetch-blob'
+
+
 
 
 
@@ -61,9 +63,8 @@ export default class Profile extends React.Component {
         .then((json)=>{
             this.setState({pairedImageData:json});//将json数据传递出去，setState会重新调用render()
             this,this.setState({dehazeCount: getJsonLength(json)})
-            console.log(this.state.pairedImageData[2]);
+            console.log(this.state.pairedImageData);
             console.log('fetch image data suceess')
-            
             console.log('dehazedCOunt', this.state.dehazeCount)
             //console.log(this.state.routeName);
             //console.log(this.state.routeData[0]);
@@ -72,6 +73,7 @@ export default class Profile extends React.Component {
             alert('fetch data error',e);
         });
   }
+
 
   render(){
     //this.fetchData();
@@ -82,6 +84,7 @@ export default class Profile extends React.Component {
           <View style={{flexDirection: 'row', marginTop: 15}}>
             <Avatar.Image 
               source={require('../assets/avatar.jpg')}
+              
               size={80}
             />
             <View style={{marginLeft: 20}}>
@@ -93,7 +96,7 @@ export default class Profile extends React.Component {
             </View>
           </View>
         </View>
-  
+       
         <View style={styles.userInfoSection}>
           <View style={styles.row}>
             <Icon name="phone" color="#777777" size={20}/>
@@ -118,12 +121,12 @@ export default class Profile extends React.Component {
           ({item}) =>
                  <TouchableOpacity style={styles.infoBoxWrapper}
                  onPress = {()=> this.props.navigation.navigate('DehazeResult',{
-                   hazyImageURL: item.hazyImageURL,
+                   hazyImageURL: item.hazyImageURL,//这里要传进去的是存在手机上的位置
                    dehazedImageURL: item.dehazedImageURL,
                  })}>
                   {/* <Text>Dehaze History 1</Text> */}
                   <Card 
-                image={{uri: item.hazyImageURL}}
+                image={{uri: "http://192.168.1.110:8521/hazyImage/" + item.imageName}}
                 caption={'your dehazed pic' + item.countID}
               />
                 </TouchableOpacity>

@@ -23,7 +23,7 @@ import CameraRoll from "@react-native-community/cameraroll";
 const common_url = 'http://192.168.1.110:3000/';  //服务器地址
 token = '';   //用户登陆后返回的token
  
-
+const dehazedImageName = ''
 
 export default class ImageSelect extends React.Component {
     constructor(props){
@@ -42,11 +42,11 @@ export default class ImageSelect extends React.Component {
             height: 400,
             cropping: true
           }).then(image => {
-            console.log(image);
-            this.setState({imageURL: image['sourceURL']});
+            console.log('iphone:',image);
+            // this.setState({imageURL: image['sourceURL']});
+            this.setState({imageURL: image['path']})
             this.setState({imageInfo: image})
           });
-          //存图片到数据库
     }
 
     
@@ -67,8 +67,13 @@ export default class ImageSelect extends React.Component {
                 body: formData,
             }).then((response) => response.json())
                 .then((responseData)=> {
+                    //转换为64
                     dehazedImageName = responseData['filename']
-                    let path = dehazedImageName;
+                    console.log('保存图片路径为',dehazedImageName)
+
+                        
+                          //console.log(response);
+                    let path = "http://192.168.1.110:8521/dehazedImage/" + dehazedImageName.substring(dehazedImageName.lastIndexOf("/")+1);
                     console.log('保存图片路径为',path)
                     CameraRoll.save(path,'photo').then(result => {
                         alert('保存成功！地址如下：\n' + result);
@@ -77,7 +82,7 @@ export default class ImageSelect extends React.Component {
                     })
 
                     
-                    resolve(responseData);
+                    
                 })
                 .catch((err)=> {
                     console.log('err', err);
@@ -85,6 +90,8 @@ export default class ImageSelect extends React.Component {
                 });
         });
     }
+
+   
 
     startDehaze = async() =>{
         //this.props.navigation.navigate('DehazeResult')
@@ -100,15 +107,7 @@ export default class ImageSelect extends React.Component {
         }
         this.uploadImage('upload', params )
             .then( res=>{
-                //请求成功
-                // if(res.status === 'success'){
-                //     //这里设定服务器返回的header中statusCode为success时数据返回成功
-                //     upLoadImgUrl = res.body.imgurl;  //服务器返回的地址
-                // }else{
-                //      //服务器返回异常，设定服务器返回的异常信息保存在 header.msgArray[0].desc
-                //     console.log('error!!!');
-                // }
-
+                
             }).catch( err => { 
                 console.log('uploadImage', err.message);
                  //请求失败
@@ -149,6 +148,11 @@ export default class ImageSelect extends React.Component {
 
     
 
+//     <Image
+//     style={{width: 66, height: 58}}
+//     source={{uri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg=='}}
+//   />
+
     render(){
         return(
             <View>
@@ -176,50 +180,6 @@ export default class ImageSelect extends React.Component {
     }
         
 };
-// }
-// const ImageSelect = () =>{
-//     const [image, setImage] = useState('https://i.ibb.co/Zg4JHkY/Hazy-Image.jpg')
-//     const choosePhotoFromLibary = () =>{
-//         ImagePicker.openPicker({
-//             width: 300,
-//             height: 400,
-//             cropping: true
-//           }).then(image => {
-//             console.log(image);
-//             setImage(image.sourceURL)
-//           });
-//     }
-
-//     const startDehaze = () =>{
-//         this.props.navigation.navigate('SignUp')
-//     };
-
-//         return(
-//             <View>
-//             <Image
-//                  source={{
-//                     uri:image,
-//                   }}
-//                   style={{width: '100%', height: '75%'}}
-//             />  
-//             <View style = {{flex: 1, alignItems: 'center', marginTop: 25}}>
-//                <TouchableOpacity style={[styles.SubmitContainer, {backgroundColor: '#0251ce'}]}
-//                 onPress = {choosePhotoFromLibary} >
-//                  <Text style = {styles.submitText}>Choose Photo From Library</Text>
-//                 </TouchableOpacity>
-//             </View>
-//             <View style = {{flex: 1, alignItems: 'center', marginTop: 25}}>
-//                <TouchableOpacity style={[styles.SubmitContainer, {backgroundColor: '#0251ce'}]}
-//                 onPress = {startDehaze} >
-//                  <Text style = {styles.submitText}>Start Dehaze Process</Text>
-//                 </TouchableOpacity>
-//             </View>
-//             </View>
-
-//         );
-// };
-
-// export default ImageSelect;
 
 
 const styles = StyleSheet.create({
