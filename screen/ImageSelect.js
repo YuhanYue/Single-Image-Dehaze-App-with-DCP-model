@@ -34,6 +34,8 @@ export default class ImageSelect extends React.Component {
         }
       }
 
+      
+
     choosePhotoFromLibary = () =>{
         ImagePicker.openPicker({
             width: 300,

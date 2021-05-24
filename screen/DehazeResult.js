@@ -20,19 +20,29 @@ export default class DehazeResult extends React.Component {
     }
   }
 
+  componentDidMount(){
+    
+  }
+
   render(){
+    const {navigation, route} = this.props;
+    const {hazyImageURL, dehazedImageURL} = route.params;
+    console.log('dehazed page hazy: ',hazyImageURL);
+    console.log('dehazed page dehazed', dehazedImageURL)    
+    console.log('DehazedPage',dehazedImageURL)
+    // hazyImageURL = this.props.navigation.navigation.state.params.hazyImageURL;
       return(
             <ScrollView>
             <Text style={styles.DehazeText}>Before Dehaze</Text>
              <Image 
-             source={require('../assets/hazy(1).jpg')}
+             source={{uri: hazyImageURL}}
             //  source={this.state.hazyImage}
              style={styles.image}
             />  
 
             <Text style={styles.DehazeText}>After Dehaze</Text>
              <Image 
-             source={require('../assets/DCPdehaze(1).jpg')}
+             source={{uri: dehazedImageURL}}
             //  source={this.state.hazyImage}
             style={styles.image}
             />  

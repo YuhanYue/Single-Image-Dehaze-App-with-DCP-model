@@ -130,18 +130,19 @@ app.post('/upload',(req, res) =>{
   
   });
 
+
   //去雾历史读取
   app.get("/history", function(req, res){
-    con.query("SELECT * FROM Image",function(err, result) {
+    con.query("SELECT * FROM Image ORDER BY countID DESC",function(err, result) {
         if (err) {
-          res.send({ err: err });}
+          res.send({ 'database err': err });}
          else{
+          console.log('Paired Image Data sent')
           res.send(result);
-          console.log(result)
+          
          } 
          console.log(result);
       }
-     
     );
   });
 

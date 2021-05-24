@@ -14,10 +14,67 @@ import Share from 'react-native-share';
 import { ScrollView, TouchableOpacity} from 'react-native';
 import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 import { TouchableOpacityBase } from 'react-native';
+import { Component } from 'react';
+import Card from '../components/Card'
 //flatlist存图片
 
-export default class Profile extends React.Component {
+
+
+class FlatListItem extends Component{
   render(){
+    <View style={styles.infoBoxWrapper}>
+      
+    </View>
+  }
+}
+
+
+function getJsonLength(jsonObj) {
+  var Length = 0;
+for (var item in jsonObj) {
+     Length++;
+  }
+ return Length;
+}
+
+export default class Profile extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      pairedImageData: null,
+      dehazeCount: 0,
+    }
+  }
+
+  componentDidMount() {
+    this.fetchData();
+    }
+
+  componentDidUpdate(){
+    //this.fetchData();
+  }
+
+  fetchData(){
+    var url = 'http://192.168.1.110:3000/history';
+    fetch(url)
+        .then((res)=> res.json())//转化为json
+        .then((json)=>{
+            this.setState({pairedImageData:json});//将json数据传递出去，setState会重新调用render()
+            this,this.setState({dehazeCount: getJsonLength(json)})
+            console.log(this.state.pairedImageData[2]);
+            console.log('fetch image data suceess')
+            
+            console.log('dehazedCOunt', this.state.dehazeCount)
+            //console.log(this.state.routeName);
+            //console.log(this.state.routeData[0]);
+        })
+        .catch((e)=>{
+            alert('fetch data error',e);
+        });
+  }
+
+  render(){
+    //this.fetchData();
     return (
       // user info part
       <SafeAreaView style={styles.container}>
@@ -49,46 +106,29 @@ export default class Profile extends React.Component {
         </View>
         <View style={styles.infoBoxWrapper}>
             <View style={styles.infoBox}>
-              <Title>112</Title>
+              <Title>{this.state.dehazeCount}</Title>
               <Caption>Dehazed Times Count</Caption>
             </View>
         </View>
 
 
         {/* scrollView Starts here! */}
-        <ScrollView style={{marginBottom:80}}>
-        <FlatList data={imageList}> 
-        </FlatList>
-        <View style={styles.infoBoxWrapper}>
-            <TouchableOpacity style={styles.infoBox}
-             onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
-              <Text>Dehaze History 1</Text>
-            </TouchableOpacity>
-         </View>
-         <View style={styles.infoBoxWrapper}>
-            <TouchableOpacity style={styles.infoBox}
-              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
-              <Text >Dehaze History 2</Text>
-            </TouchableOpacity>
-         </View>
-         <View style={styles.infoBoxWrapper}>
-            <TouchableOpacity style={styles.infoBox}
-              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
-              <Text >Dehaze History 2</Text>
-            </TouchableOpacity>
-         </View>
-         <View style={styles.infoBoxWrapper}>
-            <TouchableOpacity style={styles.infoBox}
-              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
-              <Text >Dehaze History 2</Text>
-            </TouchableOpacity>
-         </View>
-         <View style={styles.infoBoxWrapper}>
-            <TouchableOpacity style={styles.infoBox}
-              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
-              <Text >Dehaze History 2</Text>
-            </TouchableOpacity>
-         </View>
+        <ScrollView style={{marginBottom:80, paddingBottom: 30}}>
+        <FlatList data ={this.state.pairedImageData} keyExtractor={(item, index) => index.toString()} renderItem={
+          ({item}) =>
+                 <TouchableOpacity style={styles.infoBoxWrapper}
+                 onPress = {()=> this.props.navigation.navigate('DehazeResult',{
+                   hazyImageURL: item.hazyImageURL,
+                   dehazedImageURL: item.dehazedImageURL,
+                 })}>
+                  {/* <Text>Dehaze History 1</Text> */}
+                  <Card 
+                image={{uri: item.hazyImageURL}}
+                caption={'your dehazed pic' + item.countID}
+              />
+                </TouchableOpacity>
+        }
+        ></FlatList>
   
         </ScrollView>
       {/* 放去雾历史记录，考虑做时间轴 */}
@@ -97,14 +137,6 @@ export default class Profile extends React.Component {
   }
   
 };
-
-var imageList = [
-  {
-    "hazyImageURL": 'file:///Users/overainy/Desktop/ImageData/hazyImage/Q_FRHqac-W_jVRPnj6kfTNb1.jpg/Q_FRHqac-W_jVRPnj6kfTNb1.jpg',
-    "dehazedImageURL": 'file:///Users/overainy/Desktop/ImageData/dehazedImage/Q_FRHqac-W_jVRPnj6kfTNb1_dehaze.jpg'
-     
-  }
-]
 
 
 const styles = StyleSheet.create({
@@ -134,7 +166,9 @@ const styles = StyleSheet.create({
     borderTopColor: '#dddddd',
     borderTopWidth: 1,
     flexDirection: 'row',
-    height: 100,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   infoBox: {
     width: '100%',
