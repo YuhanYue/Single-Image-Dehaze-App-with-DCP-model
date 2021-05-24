@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, SafeAreaView, StyleSheet} from 'react-native';
+import {View, SafeAreaView, StyleSheet, FlatList} from 'react-native';
 import {
   Avatar,
   Title,
@@ -14,11 +14,12 @@ import Share from 'react-native-share';
 import { ScrollView, TouchableOpacity} from 'react-native';
 import { baseProps } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlers';
 import { TouchableOpacityBase } from 'react-native';
-
+//flatlist存图片
 
 export default class Profile extends React.Component {
   render(){
     return (
+      // user info part
       <SafeAreaView style={styles.container}>
         <View style={styles.userInfoSection}>
           <View style={{flexDirection: 'row', marginTop: 15}}>
@@ -46,14 +47,18 @@ export default class Profile extends React.Component {
             <Text style={{color:"#777777", marginLeft: 20}}>user@email.com</Text>
           </View>
         </View>
-  
         <View style={styles.infoBoxWrapper}>
             <View style={styles.infoBox}>
               <Title>112</Title>
               <Caption>Dehazed Times Count</Caption>
             </View>
         </View>
+
+
+        {/* scrollView Starts here! */}
         <ScrollView style={{marginBottom:80}}>
+        <FlatList data={imageList}> 
+        </FlatList>
         <View style={styles.infoBoxWrapper}>
             <TouchableOpacity style={styles.infoBox}
              onPress = {()=> this.props.navigation.navigate('DehazeResult')}>
@@ -92,6 +97,14 @@ export default class Profile extends React.Component {
   }
   
 };
+
+var imageList = [
+  {
+    "hazyImageURL": 'file:///Users/overainy/Desktop/ImageData/hazyImage/Q_FRHqac-W_jVRPnj6kfTNb1.jpg/Q_FRHqac-W_jVRPnj6kfTNb1.jpg',
+    "dehazedImageURL": 'file:///Users/overainy/Desktop/ImageData/dehazedImage/Q_FRHqac-W_jVRPnj6kfTNb1_dehaze.jpg'
+     
+  }
+]
 
 
 const styles = StyleSheet.create({

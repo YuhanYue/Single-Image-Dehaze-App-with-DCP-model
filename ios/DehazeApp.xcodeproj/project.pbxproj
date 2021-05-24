@@ -14,7 +14,6 @@
 		50BC16172B6320331A470E00 /* libPods-DehazeApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 527D20CA8AF672B6720983C6 /* libPods-DehazeApp.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		A781FA5926203DDB009FBE25 /* QBImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A781FA5826203DDB009FBE25 /* QBImagePicker.storyboard */; };
-		A7B0F8A6265AC7850023C679 /* libRNCCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B0F8A2265AC72A0023C679 /* libRNCCameraRoll.a */; };
 		A7F26EA72658FD9000DA0871 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7F26EA62658FD9000DA0871 /* GoogleService-Info.plist */; };
 		C9432B619A51B7E273DC08C9 /* libPods-DehazeApp-DehazeAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD0185010CAB638CD35B6B5 /* libPods-DehazeApp-DehazeAppTests.a */; };
 /* End PBXBuildFile section */
@@ -72,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7B0F8A6265AC7850023C679 /* libRNCCameraRoll.a in Frameworks */,
 				50BC16172B6320331A470E00 /* libPods-DehazeApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
